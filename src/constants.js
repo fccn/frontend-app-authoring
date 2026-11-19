@@ -3,6 +3,8 @@ export const TIME_FORMAT = 'HH:mm';
 export const DATE_TIME_FORMAT = 'YYYY-MM-DDTHH:mm:ss\\Z';
 export const COMMA_SEPARATED_DATE_FORMAT = 'MMMM D, YYYY';
 export const DEFAULT_EMPTY_WYSIWYG_VALUE = '<p>&nbsp;</p>';
+// Length of the database columns that store block display names, e.g. the bookmarks XBlockCache.
+export const DISPLAY_NAME_MAX_LENGTH = 255;
 export const STATEFUL_BUTTON_STATES = {
   default: 'default',
   pending: 'pending',

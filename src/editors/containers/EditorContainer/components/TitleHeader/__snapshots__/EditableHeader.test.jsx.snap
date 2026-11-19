@@ -6,6 +6,7 @@ exports[`EditableHeader snapshot snapshot 1`] = `
 >
   <Form.Control
     autoFocus={true}
+    maxLength={255}
     onChange={[MockFunction args.handleChange]}
     onKeyDown={[MockFunction args.handleKeyDown]}
     placeholder="Title"

@@ -15,7 +15,7 @@ import { Info as InfoIcon } from '@openedx/paragon/icons';
 import TypeaheadDropdown from '../../editors/sharedComponents/TypeaheadDropdown';
 
 import AlertMessage from '../alert-message';
-import { STATEFUL_BUTTON_STATES } from '../../constants';
+import { DISPLAY_NAME_MAX_LENGTH, STATEFUL_BUTTON_STATES } from '../../constants';
 import { RequestStatus, TOTAL_LENGTH_KEY } from '../../data/constants';
 import { getSavingStatus } from '../data/selectors';
 import { getStudioHomeData } from '../../studio-home/data/selectors';
@@ -65,6 +65,7 @@ const CreateOrRerunCourseForm = ({
       placeholder: intl.formatMessage(messages.courseDisplayNamePlaceholder),
       disabled: false,
       ref: displayNameFieldReference,
+      maxLength: DISPLAY_NAME_MAX_LENGTH,
     },
     {
       label: intl.formatMessage(messages.courseOrgLabel),
@@ -239,6 +240,7 @@ const CreateOrRerunCourseForm = ({
                 isInvalid={hasErrorField(field.name)}
                 disabled={field.disabled}
                 ref={field?.ref}
+                maxLength={field.maxLength}
               />
             ) : renderOrgField(field)}
             <Form.Text>{field.helpText}</Form.Text>

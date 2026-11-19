@@ -230,6 +230,15 @@ describe('<CardHeader />', () => {
     });
   });
 
+  it('limits the title field to 255 characters', async () => {
+    const { findByTestId } = renderComponent({
+      ...cardHeaderProps,
+      isFormOpen: true,
+    });
+
+    expect(await findByTestId('subsection-edit-field')).toHaveAttribute('maxlength', '255');
+  });
+
   it('check is field disabled when isDisabledEditField is true', async () => {
     const { findByTestId } = renderComponent({
       ...cardHeaderProps,

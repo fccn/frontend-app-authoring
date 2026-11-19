@@ -29,5 +29,9 @@ describe('EditableHeader', () => {
         <EditConfirmationButtons updateTitle={props.updateTitle} cancelEdit={props.cancelEdit} />,
       );
     });
+    test('limits the title to 255 characters', () => {
+      const formControl = el.instance.findByType(Form.Control)[0];
+      expect(formControl.props.maxLength).toEqual(255);
+    });
   });
 });

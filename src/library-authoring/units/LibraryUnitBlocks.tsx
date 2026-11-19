@@ -8,6 +8,7 @@ import {
   useCallback, useContext, useEffect, useState,
 } from 'react';
 import { blockTypes } from '../../editors/data/constants/app';
+import { DISPLAY_NAME_MAX_LENGTH } from '../../constants';
 import DraggableList, { SortableItem } from '../../generic/DraggableList';
 
 import ErrorAlert from '../../generic/alert-error';
@@ -105,6 +106,7 @@ const BlockHeader = ({ block, readOnly }: ComponentBlockProps) => {
           onSave={handleSaveDisplayName}
           text={showOnlyPublished ? (block.publishedDisplayName ?? block.displayName) : block.displayName}
           readOnly={readOnly}
+          maxLength={DISPLAY_NAME_MAX_LENGTH}
         />
       </Stack>
       <ActionRow.Spacer />
