@@ -19,6 +19,7 @@ interface InplaceTextEditorProps {
   onSave: (newText: string) => Promise<void>;
   readOnly?: boolean;
   textClassName?: string;
+  maxLength?: number;
 }
 
 export const InplaceTextEditor: React.FC<InplaceTextEditorProps> = ({
@@ -26,6 +27,7 @@ export const InplaceTextEditor: React.FC<InplaceTextEditorProps> = ({
   onSave,
   readOnly = false,
   textClassName,
+  maxLength,
 }) => {
   const intl = useIntl();
   const [inputIsActive, setIsActive] = useState(false);
@@ -87,6 +89,7 @@ export const InplaceTextEditor: React.FC<InplaceTextEditorProps> = ({
             type="text"
             aria-label="Text input"
             defaultValue={text}
+            maxLength={maxLength}
             onBlur={handleOnChangeText}
             onKeyDown={handleOnKeyDown}
           />

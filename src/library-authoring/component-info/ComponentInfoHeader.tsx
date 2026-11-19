@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { useIntl } from '@edx/frontend-platform/i18n';
 
+import { DISPLAY_NAME_MAX_LENGTH } from '../../constants';
 import { InplaceTextEditor } from '../../generic/inplace-text-editor';
 import { ToastContext } from '../../generic/toast-context';
 import { useLibraryContext } from '../common/context/LibraryContext';
@@ -50,6 +51,7 @@ const ComponentInfoHeader = () => {
       text={xblockFields?.displayName}
       readOnly={readOnly}
       textClassName="font-weight-bold m-1.5"
+      maxLength={DISPLAY_NAME_MAX_LENGTH}
     />
   );
 };

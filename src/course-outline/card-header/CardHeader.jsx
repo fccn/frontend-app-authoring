@@ -21,6 +21,7 @@ import {
 import { useContentTagsCount } from '../../generic/data/apiHooks';
 import { ContentTagsDrawerSheet } from '../../content-tags-drawer';
 import TagCount from '../../generic/tag-count';
+import { DISPLAY_NAME_MAX_LENGTH } from '../../constants';
 import { useEscapeClick } from '../../hooks';
 import { ITEM_BADGE_STATUS } from '../constants';
 import { scrollToElement } from '../utils';
@@ -121,6 +122,7 @@ const CardHeader = ({
               name="displayName"
               onChange={(e) => setTitleValue(e.target.value)}
               aria-label="edit field"
+              maxLength={DISPLAY_NAME_MAX_LENGTH}
               onBlur={() => onEditSubmit(titleValue)}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {

@@ -9,7 +9,7 @@ import {
 } from '@openedx/paragon/icons';
 
 import ConfigureModal from '../../generic/configure-modal/ConfigureModal';
-import { COURSE_BLOCK_NAMES } from '../../constants';
+import { COURSE_BLOCK_NAMES, DISPLAY_NAME_MAX_LENGTH } from '../../constants';
 import { getCourseUnitData } from '../data/selectors';
 import { updateQueryPendingStatus } from '../data/slice';
 import messages from './messages';
@@ -68,6 +68,7 @@ const HeaderTitle = ({
               name="displayName"
               onChange={(e) => setTitleValue(e.target.value)}
               aria-label={intl.formatMessage(messages.ariaLabelButtonEdit)}
+              maxLength={DISPLAY_NAME_MAX_LENGTH}
               onBlur={() => handleTitleEditSubmit(titleValue)}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {

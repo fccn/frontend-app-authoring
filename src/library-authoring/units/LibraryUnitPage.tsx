@@ -9,6 +9,7 @@ import { useCallback, useContext, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 
+import { DISPLAY_NAME_MAX_LENGTH } from '../../constants';
 import Loading from '../../generic/Loading';
 import NotFoundAlert from '../../generic/NotFoundAlert';
 import SubHeader from '../../generic/sub-header/SubHeader';
@@ -63,6 +64,7 @@ const EditableTitle = ({ unitId }: EditableTitleProps) => {
       onSave={handleSaveDisplayName}
       text={container.displayName}
       readOnly={readOnly}
+      maxLength={DISPLAY_NAME_MAX_LENGTH}
     />
   );
 };

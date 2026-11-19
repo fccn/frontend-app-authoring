@@ -102,6 +102,14 @@ describe('<CreateOrRerunCourseForm />', () => {
     expect(screen.getByPlaceholderText(messages.courseRunPlaceholder.defaultMessage)).toBeInTheDocument();
   });
 
+  it('limits the course name to 255 characters', async () => {
+    render(<RootWrapper {...props} />);
+    await mockStore();
+
+    expect(screen.getByPlaceholderText(messages.courseDisplayNamePlaceholder.defaultMessage))
+      .toHaveAttribute('maxlength', '255');
+  });
+
   it('renders create course form with help text successfully', async () => {
     render(<RootWrapper {...props} />);
     await mockStore();
