@@ -819,6 +819,22 @@ describe('<LibraryAuthoringPage />', () => {
     expect(await screen.findByText(/unit name is required/i)).toBeInTheDocument();
   });
 
+  it('should limit the name of a new unit to 255 characters', async () => {
+    await renderLibraryPage();
+
+    expect(await screen.findByRole('heading')).toBeInTheDocument();
+
+    // Open Add content sidebar
+    fireEvent.click(screen.getByRole('button', { name: /new/i }));
+
+    // Open New unit Modal
+    const sidebar = screen.getByTestId('library-sidebar');
+    fireEvent.click(within(sidebar).getAllByRole('button', { name: /unit/i })[0]);
+    expect(await screen.findByRole('heading', { name: /new unit/i })).toBeInTheDocument();
+
+    expect(screen.getByRole('textbox', { name: /name your unit/i })).toHaveAttribute('maxlength', '255');
+  });
+
   it('should show error on create unit', async () => {
     await renderLibraryPage();
     const displayName = 'This is a Test';
