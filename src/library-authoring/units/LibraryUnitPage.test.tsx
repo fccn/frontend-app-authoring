@@ -134,6 +134,24 @@ describe('<LibraryUnitPage />', () => {
     expect(mockShowToast).toHaveBeenCalledWith('Container updated successfully.');
   });
 
+  it('limits the unit title to 255 characters', async () => {
+    renderLibraryUnitPage();
+    expect((await screen.findAllByText(libraryTitle))[0]).toBeInTheDocument();
+
+    fireEvent.click(screen.getAllByRole('button', { name: /edit/i })[0]); // 0 is the Unit Title
+
+    expect(await screen.findByRole('textbox', { name: /text input/i })).toHaveAttribute('maxlength', '255');
+  });
+
+  it('limits the component titles to 255 characters', async () => {
+    renderLibraryUnitPage();
+    await screen.findByText('text block 0');
+
+    fireEvent.click(screen.getAllByRole('button', { name: /edit/i })[1]); // 1 is the first component on the list
+
+    expect(await screen.findByRole('textbox', { name: /text input/i })).toHaveAttribute('maxlength', '255');
+  });
+
   it('show error if renaming unit fails', async () => {
     renderLibraryUnitPage();
     expect((await screen.findAllByText(libraryTitle))[0]).toBeInTheDocument();

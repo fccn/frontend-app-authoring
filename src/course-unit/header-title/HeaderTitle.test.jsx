@@ -76,6 +76,15 @@ describe('<HeaderTitle />', () => {
     expect(getByRole('button', { name: messages.altButtonSettings.defaultMessage })).toBeEnabled();
   });
 
+  it('limits the title field to 255 characters', () => {
+    const { getByRole } = renderComponent({
+      isTitleEditFormOpen: true,
+    });
+
+    const titleField = getByRole('textbox', { name: messages.ariaLabelButtonEdit.defaultMessage });
+    expect(titleField).toHaveAttribute('maxlength', '255');
+  });
+
   it('Units sourced from upstream show a disabled edit button', async () => {
     // Override mock unit with one sourced from an upstream library
     axiosMock = new MockAdapter(getAuthenticatedHttpClient());

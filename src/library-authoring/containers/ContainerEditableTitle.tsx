@@ -1,5 +1,6 @@
 import { useIntl } from '@edx/frontend-platform/i18n';
 import { useContext } from 'react';
+import { DISPLAY_NAME_MAX_LENGTH } from '../../constants';
 import { InplaceTextEditor } from '../../generic/inplace-text-editor';
 import { ToastContext } from '../../generic/toast-context';
 import { useLibraryContext } from '../common/context/LibraryContext';
@@ -43,6 +44,7 @@ export const ContainerEditableTitle = ({ containerId, textClassName }: EditableT
       text={showOnlyPublished ? (container.publishedDisplayName ?? container.displayName) : container.displayName}
       readOnly={readOnly}
       textClassName={textClassName}
+      maxLength={DISPLAY_NAME_MAX_LENGTH}
     />
   );
 };

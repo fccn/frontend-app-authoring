@@ -92,6 +92,16 @@ describe('<ContainerInfoHeader />', () => {
     expect(mockShowToast).toHaveBeenCalledWith('Container updated successfully.');
   });
 
+  it('should limit the container title to 255 characters', async () => {
+    render();
+
+    expect(await screen.findByText('Test Unit')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: /edit/i }));
+
+    expect(screen.getByRole('textbox', { name: /text input/i })).toHaveAttribute('maxlength', '255');
+  });
+
   it('should not update container title if title is the same', async () => {
     render();
     expect(await screen.findByText('Test Unit')).toBeInTheDocument();

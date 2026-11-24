@@ -98,6 +98,16 @@ describe('<ComponentInfoHeader />', () => {
     });
   });
 
+  it('should limit the component title to 255 characters', async () => {
+    render();
+
+    expect(await screen.findByText('Test HTML Block')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: /edit/i }));
+
+    expect(screen.getByRole('textbox', { name: /text input/i })).toHaveAttribute('maxlength', '255');
+  });
+
   it('should close edit component title on press Escape', async () => {
     const url = getXBlockFieldsVersionApiUrl(usageKey, 'draft');
     axiosMock.onPost(url).reply(200);

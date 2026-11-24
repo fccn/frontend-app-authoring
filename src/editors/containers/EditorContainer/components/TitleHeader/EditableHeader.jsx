@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Form } from '@openedx/paragon';
+import { DISPLAY_NAME_MAX_LENGTH } from '../../../../../constants';
 import EditConfirmationButtons from './EditConfirmationButtons';
 
 const EditableHeader = ({
@@ -20,6 +21,7 @@ const EditableHeader = ({
       onChange={handleChange}
       onKeyDown={handleKeyDown}
       placeholder="Title"
+      maxLength={DISPLAY_NAME_MAX_LENGTH}
       ref={inputRef}
       value={localTitle}
     />

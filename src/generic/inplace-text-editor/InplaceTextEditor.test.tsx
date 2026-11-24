@@ -55,6 +55,22 @@ describe('<InplaceTextEditor />', () => {
     expect(mockOnSave).toHaveBeenCalledWith('New text');
   });
 
+  it('should limit the text length to maxLength', () => {
+    render(<InplaceTextEditor text="Test text" onSave={mockOnSave} maxLength={10} />);
+
+    fireEvent.click(screen.getByRole('button', { name: /edit/i }));
+
+    expect(screen.getByRole('textbox')).toHaveAttribute('maxlength', '10');
+  });
+
+  it('should not limit the text length by default', () => {
+    render(<InplaceTextEditor text="Test text" onSave={mockOnSave} />);
+
+    fireEvent.click(screen.getByRole('button', { name: /edit/i }));
+
+    expect(screen.getByRole('textbox')).not.toHaveAttribute('maxlength');
+  });
+
   it('should close edit text on press Escape', async () => {
     render(<InplaceTextEditor text="Test text" onSave={mockOnSave} />);
 

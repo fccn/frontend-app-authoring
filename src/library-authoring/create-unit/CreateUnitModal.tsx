@@ -8,6 +8,7 @@ import { useIntl } from '@edx/frontend-platform/i18n';
 import { Formik } from 'formik';
 import { useNavigate } from 'react-router';
 import * as Yup from 'yup';
+import { DISPLAY_NAME_MAX_LENGTH } from '../../constants';
 import FormikControl from '../../generic/FormikControl';
 import { useLibraryContext } from '../common/context/LibraryContext';
 import messages from './messages';
@@ -87,6 +88,7 @@ const CreateUnitModal = () => {
                 )}
                 value={formikProps.values.displayName}
                 placeholder={intl.formatMessage(messages.createUnitModalNamePlaceholder)}
+                maxLength={DISPLAY_NAME_MAX_LENGTH}
                 controlClasses="pb-2"
               />
             </ModalDialog.Body>
